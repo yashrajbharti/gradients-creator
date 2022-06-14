@@ -55,6 +55,12 @@
         var src = encodeURI(data);
        
         document.getElementById('screenshot').src = src;
+        const link = document.createElement('a')
+  link.href = src
+  link.download = 'gradient.png'
+  document.body.appendChild(link)
+  link.click()
+  document.body.removeChild(link)
         document.getElementById('size').innerHTML = src.length + ' bytes';
     }); }, 1000);
 }
