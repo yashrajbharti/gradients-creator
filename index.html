@@ -11,16 +11,17 @@
     <script src="canvas.js"></script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script> -->
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
-    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js"></script>
 
 </head>
+
 <body class="random-color">
     <img src="pokedex.png" alt="" height="30px">
 
-        <div class="display" id="gradient"></div>
- 
-        
+    <div class="display" id="gradient"></div>
+
+
     <div class="codess"></div>
 
     <input type="color" class="color1" name="color1" value="#FFAAAA">
@@ -36,37 +37,40 @@
         <option value="to top"> to top</option>
     </select>
 
-    <a class="btn btn-success btn-gradient" href="javascript:void(0);" onclick="generateScreenshot();"><span>Preview</span></a>
+    <a class="btn btn-success btn-gradient" href="javascript:void(0);"
+        onclick="generateScreenshot();"><span>Download</span></a>
     <h1 style="padding-bottom: 50px;
         margin-bottom: 50px;"> &nbsp;</h1>
-        <div><img src="" id="screenshot"></div>
+    <div><img src="" id="screenshot"></div>
     <script src="script.js"></script>
     <script src="download.js"></script>
-<script>
-    function generateScreenshot() {
-    
-    setTimeout(() => {
-    html2canvas(document.getElementById('gradient'), {
-            logging: true,
-            profile: true,
-            scale: 2,
-            useCORS: true}).then(function(canvas) {
-        var data = canvas.toDataURL('image/png', 0.9)
-        var src = encodeURI(data);
-       
-        document.getElementById('screenshot').src = src;
-        const link = document.createElement('a')
-  link.href = src
-  link.download = 'gradient.png'
-  document.body.appendChild(link)
-  link.click()
-  document.body.removeChild(link)
-        document.getElementById('size').innerHTML = src.length + ' bytes';
-    }); }, 1000);
-}
+    <script>
+        function generateScreenshot() {
+
+            setTimeout(() => {
+                html2canvas(document.getElementById('gradient'), {
+                    logging: true,
+                    profile: true,
+                    scale: 2,
+                    useCORS: true
+                }).then(function (canvas) {
+                    var data = canvas.toDataURL('image/png', 0.9)
+                    var src = encodeURI(data);
+
+                    // document.getElementById('screenshot').src = src;
+                    const link = document.createElement('a')
+                    link.href = src
+                    link.download = 'gradient.png'
+                    document.body.appendChild(link)
+                    link.click()
+                    document.body.removeChild(link)
+                    document.getElementById('size').innerHTML = src.length + ' bytes';
+                });
+            }, 1000);
+        }
 
 
-</script>
+    </script>
 </body>
 
 </html>
