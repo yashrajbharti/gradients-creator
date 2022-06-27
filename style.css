@@ -4,7 +4,8 @@
     box-sizing: border-box;
 }
 
-a{  
+a,
+#filetag::-webkit-file-upload-button {  
     width: 130px;
     height: 40px;
     color: #fff;
@@ -164,4 +165,10 @@ border-radius: 5px;
 width: 130px;
 height: 35px;
 padding-left: 9px;
+}
+
+#filetag{
+  min-width: 300px;
+  margin-top: 50px;
+  font-size: 14px;
 }

@@ -34,3 +34,25 @@ function returnColor() {
 document.querySelector('select[name="toDirection"]').onchange = returnColor;
 color1.addEventListener("input", returnColor);
 color2.addEventListener("input", returnColor);
+
+
+var fileTag = document.getElementById("filetag"),
+    preview = document.getElementById("preview");
+    
+fileTag.addEventListener("change", function() {
+  changeImage(this);
+});
+
+function changeImage(input) {
+  var reader;
+
+  if (input.files && input.files[0]) {
+    reader = new FileReader();
+
+    reader.onload = function(e) {
+      preview.setAttribute('src', e.target.result);
+    }
+
+    reader.readAsDataURL(input.files[0]);
+  }
+}
