@@ -172,3 +172,16 @@ padding-left: 9px;
   margin-top: 50px;
   font-size: 14px;
 }
+
+img#preview{
+  width:100%;
+  max-width:600px;
+}
+div#move {
+  position: fixed;
+  font-size: 130px;
+}
+.cancel{
+  cursor: pointer;
+  transform: translate(-33px, 25px);
+}
