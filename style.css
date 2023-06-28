@@ -1,8 +1,11 @@
-*{
-    margin: 0;
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
     padding: 0;
-    box-sizing: border-box;
+    border: 0;
+    font-family: 'Poppins', sans-serif;
 }
+
 
 a,
 #filetag::-webkit-file-upload-button {  
