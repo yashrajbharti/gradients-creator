@@ -30,6 +30,9 @@ function returnColor() {
 
   currentSettings();
 }
+css.addEventListener("input", () => {
+  bodys.style.background = css.textContent;
+});
 
 document.querySelector('select[name="toDirection"]').onchange = returnColor;
 color1.addEventListener("input", returnColor);
@@ -37,9 +40,9 @@ color2.addEventListener("input", returnColor);
 
 cancel.style.display = "none";
 var fileTag = document.getElementById("filetag"),
-    preview = document.getElementById("preview");
-    
-fileTag.addEventListener("change", function() {
+  preview = document.getElementById("preview");
+
+fileTag.addEventListener("change", function () {
   changeImage(this);
 });
 
@@ -49,72 +52,72 @@ function changeImage(input) {
   if (input.files && input.files[0]) {
     reader = new FileReader();
 
-    reader.onload = function(e) {
-      preview.setAttribute('src', e.target.result);
+    reader.onload = function (e) {
+      preview.setAttribute("src", e.target.result);
       preview.style.display = "block";
       cancel.style.display = "block";
-    }
+    };
 
     reader.readAsDataURL(input.files[0]);
   }
 }
-function hidestuff(){
+function hidestuff() {
   cancel.style.display = "none";
   preview.style.display = "none";
 }
 
 var up = false,
-    right = false,
-    down = false,
-    left = false,
-    x = window.innerWidth/2-130/2,
-    y = window.innerHeight/2-130/2
-document.addEventListener('keydown',press)
-function press(e){
-  if ( e.keyCode === 87 /* w */ ){
-    up = true
+  right = false,
+  down = false,
+  left = false,
+  x = window.innerWidth / 2 - 130 / 2,
+  y = window.innerHeight / 2 - 130 / 2;
+document.addEventListener("keydown", press);
+function press(e) {
+  if (e.code === "KeyW" /* w */) {
+    up = true;
   }
-  if ( e.keyCode === 68 /* d */){
-    right = true
+  if (e.code === "KeyD" /* d */) {
+    right = true;
   }
-  if ( e.keyCode === 83 /* s */){
-    down = true
+  if (e.code === "KeyS" /* s */) {
+    down = true;
   }
-  if ( e.keyCode === 65 /* a */ ){
-    left = true
-  }
-}
-document.addEventListener('keyup',release)
-function release(e){
-  if ( e.keyCode === 87 /* w */ ){
-    up = false
-  }
-  if ( e.keyCode === 68 /* d */){
-    right = false
-  }
-  if ( e.keyCode === 83 /* s */){
-    down = false
-  }
-  if (e.keyCode === 65 /* a */ ){
-    left = false
+  if (e.code === "KeyA" /* a */) {
+    left = true;
   }
 }
-function gameLoop(){
-  var div = document.querySelector('#move')
-  if (up){
-    y = y - 20
+document.addEventListener("keyup", release);
+function release(e) {
+  if (e.code === "KeyW" /* w */) {
+    up = false;
   }
-  if (right){
-    x = x + 20
+  if (e.code === "KeyD" /* d */) {
+    right = false;
   }
-  if (down){
-    y = y + 20
+  if (e.code === "KeyS" /* s */) {
+    down = false;
   }
-  if (left){
-    x = x - 20
+  if (e.code === "KeyA" /* a */) {
+    left = false;
   }
-  div.style.left = x+'px'
-  div.style.top = y+'px'
-  window.requestAnimationFrame(gameLoop)
 }
-window.requestAnimationFrame(gameLoop)
+function gameLoop() {
+  var div = document.querySelector("#move");
+  if (up) {
+    y = y - 20;
+  }
+  if (right) {
+    x = x + 20;
+  }
+  if (down) {
+    y = y + 20;
+  }
+  if (left) {
+    x = x - 20;
+  }
+  div.style.left = x + "px";
+  div.style.top = y + "px";
+  window.requestAnimationFrame(gameLoop);
+}
+window.requestAnimationFrame(gameLoop);
