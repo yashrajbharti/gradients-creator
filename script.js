@@ -1,25 +1,25 @@
 //Some classes and html functions need to determine a constant
-var css = document.querySelector(".codess"); // color code
-var color1 = document.querySelector(".color1"); // 1st color
-var color2 = document.querySelector(".color2"); // 2nd color
-var bodys = document.getElementById("gradient"); // color display
-var linearDirection = document.getElementsByName("toDirection")[0]; //Select box
-var cancel = document.querySelector(".cancel");
+const css = document.querySelector(".codess"); // color code
+const color1 = document.querySelector(".color1"); // 1st color
+const color2 = document.querySelector(".color2"); // 2nd color
+const bodys = document.getElementById("gradient"); // color display
+const linearDirection = document.getElementsByName("toDirection")[0]; //Select box
+const cancel = document.querySelector(".cancel");
 //displays default CSS RGBA values for linear-gradient
 
 function currentSettings() {
-  var CSSprop = window
+  const CSSprop = window
     .getComputedStyle(bodys, null)
     .getPropertyValue("background-image");
   // console.log(CSSprop)
-  css.textContent = CSSprop;
+  css.textContent = "background-image:" + CSSprop;
 }
 
 currentSettings();
 //You have to make arrangements to see the color code in the display
 
 function returnColor() {
-  bodys.style.background =
+  bodys.style.backgroundImage =
     "linear-gradient(" +
     linearDirection.value +
     ", " +
@@ -31,7 +31,13 @@ function returnColor() {
   currentSettings();
 }
 css.addEventListener("input", () => {
-  bodys.style.background = css.textContent;
+  if (
+    css.textContent.includes("background-color") &&
+    css.textContent.includes("background-image")
+  ) {
+    bodys.style.backgroundColor = css.textContent.split(/[:;]/)[1];
+    bodys.style.backgroundImage = css.textContent.split(/[:;]/)[3];
+  } else bodys.style.backgroundImage = css.textContent.split(/[:;]/)[1];
 });
 
 document.querySelector('select[name="toDirection"]').onchange = returnColor;
@@ -39,7 +45,7 @@ color1.addEventListener("input", returnColor);
 color2.addEventListener("input", returnColor);
 
 cancel.style.display = "none";
-var fileTag = document.getElementById("filetag"),
+const fileTag = document.getElementById("filetag"),
   preview = document.getElementById("preview");
 
 fileTag.addEventListener("change", function () {
@@ -47,7 +53,7 @@ fileTag.addEventListener("change", function () {
 });
 
 function changeImage(input) {
-  var reader;
+  let reader;
 
   if (input.files && input.files[0]) {
     reader = new FileReader();
@@ -66,7 +72,7 @@ function hidestuff() {
   preview.style.display = "none";
 }
 
-var up = false,
+let up = false,
   right = false,
   down = false,
   left = false,
@@ -103,7 +109,7 @@ function release(e) {
   }
 }
 function gameLoop() {
-  var div = document.querySelector("#move");
+  const div = document.querySelector("#move");
   if (up) {
     y = y - 20;
   }
